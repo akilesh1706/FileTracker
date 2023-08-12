@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Mono:wght@500&display=swap"
+        rel="stylesheet">
+    <style>
+        #maindiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* position: fixed; */
+            height: 200px;
+            width: 500px;
+            margin: auto;
+            margin-top: 150px;
+            background-color: rgb(61, 232, 61);
+            border-radius: 30px;
+            border: 10px dashed blue;
+        }
+
+        #hone {
+            font-size: 80px;
+            display: flex;
+            justify-content: center;
+            color: blue;
+        }
+        #ahref{
+            height: 50px;
+            width: 300px;
+            background-color: lightgreen;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <% if(locals.fileLink !=null) { %>
+        <div style="margin-bottom: 1rem; height: 50px; width: 400px; background-color: lightgreen; padding-left: 25px; padding-top: 10px">
+            Your file is uploaded. Here is the link:
+            <!-- <div id="ahref"> -->
+                <a href="<%= locals.fileLink %>"></a>
+            <!-- </div> -->
+
+            <%= locals.fileLink %></a>
+
+        </div>
+        <% } %>
+            <h1 id="hone">File Sharer</h1>
+            <div id="maindiv">
+
+                <form action="/upload" method="post"
+                    style="display: grid; gap: .5rem; grid-template-columns: auto 1fr; max-width: 500px; margin: 0 auto;"
+                    enctype="multipart/form-data">
+                    <label for="file" style="font-family: 'Montserrat', sans-serif;
+        font-family: 'Roboto Mono', monospace; font-size: 20px; color: black;">File:</label>
+                    <input type="file" id="file" name="file" required>
+                    <label for="password" style="font-family: 'Montserrat', sans-serif;
+        font-family: 'Roboto Mono', monospace; font-size: 20px">Password:</label>
+                    <input type="password" id="password" name="password" style="border-radius: 5px;">
+                    <button style="grid-column: span 2; background-color: black; height: 30px; border-radius: 10px;" type="submit"
+                        id="share"><b>Generate Link</b></button>
+                </form>
+
+            </div>
+</body>
+
+</html>
